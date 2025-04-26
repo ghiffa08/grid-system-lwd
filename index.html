@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belajar CSS Grid - Paguyuban Barudak Komputer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/mode-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/mode-html.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="bg-gray-50">
+    <header class="bg-pbk-blue text-white py-4 shadow-md z-50 relative">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center">
+          <h1 class="text-2xl md:text-3xl font-bold">Belajar CSS Grid</h1>
+          <div class="text-sm md:text-base">
+            <span class="font-semibold">Paguyuban Barudak Komputer</span>
+            <span class="block text-xs md:text-sm">
+              Learning With Doing (LWD)
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+      <div class="container mx-auto px-4">
+        <ul class="flex space-x-1 overflow-x-auto py-2" id="main-nav">
+          <li>
+            <button
+              class="px-3 py-2 rounded-md font-medium text-sm focus:outline-none tab-active"
+              data-target="teori"
+            >
+              Teori Dasar
+            </button>
+          </li>
+          <li>
+            <button
+              class="px-3 py-2 rounded-md font-medium text-sm focus:outline-none"
+              data-target="interaktif"
+            >
+              Interaktif Builder
+            </button>
+          </li>
+          <li>
+            <button
+              class="px-3 py-2 rounded-md font-medium text-sm focus:outline-none"
+              data-target="playground"
+            >
+              Sandbox/Playground
+            </button>
+          </li>
+          <li>
+            <button
+              class="px-3 py-2 rounded-md font-medium text-sm focus:outline-none"
+              data-target="quiz"
+            >
+              Quiz
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-6">
+      <!-- Teori Dasar Section -->
+      <section id="teori" class="mb-12">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-bold mb-4 text-pbk-blue">
+            Teori Dasar CSS Grid
+          </h2>
+
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-3">Apa itu CSS Grid?</h3>
+            <p class="mb-4">
+              CSS Grid adalah sistem layout dua dimensi yang memungkinkan kita
+              untuk membuat layout kompleks dengan lebih mudah dan fleksibel.
+              Tidak seperti Flexbox yang hanya berfokus pada satu dimensi (baris
+              atau kolom), Grid dapat menangani baris dan kolom secara
+              bersamaan.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div class="bg-gray-50 p-4 rounded-md">
+                <h4 class="font-bold text-pbk-blue mb-2">
+                  Kelebihan CSS Grid:
+                </h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li>Layout dua dimensi (baris dan kolom)</li>
+                  <li>Kontrol yang lebih presisi</li>
+                  <li>Dapat menangani layout yang kompleks</li>
+                  <li>Mempermudah penataan item</li>
+                  <li>Fleksibel dan responsif</li>
+                </ul>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-md">
+                <h4 class="font-bold text-pbk-blue mb-2">Kasus Penggunaan:</h4>
+                <ul class="list-disc list-inside space-y-1">
+                  <li>Layout website secara keseluruhan</li>
+                  <li>Galeri foto</li>
+                  <li>Dashboard</li>
+                  <li>Formulir kompleks</li>
+                  <li>Tata letak kartu/card</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-3">Konsep Dasar</h3>
+
+            <div class="mb-6">
+              <h4 class="font-bold text-pbk-blue mb-2">
+                1. Container dan Item
+              </h4>
+              <p class="mb-2">Grid Layout terdiri dari dua komponen utama:</p>
+              <ul class="list-disc list-inside mb-4 ml-4">
+                <li>
+                  <strong>Grid Container</strong>: Elemen induk yang menjadi
+                  wadah grid
+                </li>
+                <li>
+                  <strong>Grid Item</strong>: Elemen anak langsung dari grid
+                  container
+                </li>
+              </ul>
+              <div class="bg-gray-100 p-4 rounded-md">
+                <pre class="text-sm"><code class="language-css">.container {
+  display: grid;  /* Menjadikan elemen sebagai grid container */
+}
+
+/* Semua elemen anak langsung dari container akan menjadi grid item */</code></pre>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <h4 class="font-bold text-pbk-blue mb-2">
+                2. Grid Lines, Tracks, dan Areas
+              </h4>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div class="bg-gray-50 p-3 rounded-md">
+                  <p class="font-bold mb-1">Grid Lines</p>
+                  <p class="text-sm">
+                    Garis horizontal dan vertikal yang membentuk struktur grid.
+                  </p>
+                </div>
+                <div class="bg-gray-50 p-3 rounded-md">
+                  <p class="font-bold mb-1">Grid Tracks</p>
+                  <p class="text-sm">
+                    Ruang antara dua grid lines, berupa baris (row) atau kolom
+                    (column).
+                  </p>
+                </div>
+                <div class="bg-gray-50 p-3 rounded-md">
+                  <p class="font-bold mb-1">Grid Areas</p>
+                  <p class="text-sm">
+                    Area yang dibatasi oleh empat grid lines, dapat diisi oleh
+                    grid item.
+                  </p>
+                </div>
+              </div>
+              <div class="grid-box p-4 bg-gray-50 rounded-md">
+                <div class="grid grid-cols-3 gap-4" style="position: relative">
+                  <div class="grid-item">Item 1</div>
+                  <div class="grid-item">Item 2</div>
+                  <div class="grid-item">Item 3</div>
+                  <div class="grid-item">Item 4</div>
+                  <div class="grid-item">Item 5</div>
+                  <div class="grid-item">Item 6</div>
+
+                  <!-- Grid lines visualization overlay -->
+                  <div
+                    style="
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      right: 0;
+                      bottom: 0;
+                      pointer-events: none;
+                    "
+                  >
+                    <div
+                      style="
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 25%;
+                        width: 1px;
+                        background-color: red;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 50%;
+                        width: 1px;
+                        background-color: red;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 75%;
+                        width: 1px;
+                        background-color: red;
+                      "
+                    ></div>
+                    <div
+                      style="
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        top: 50%;
+                        height: 1px;
+                        background-color: red;
+                      "
+                    ></div>
+                  </div>
+                </div>
+                <div class="text-center mt-2 text-sm text-gray-600">
+                  <p>
+                    Visualisasi Grid: 3 kolom dengan 2 baris, garis merah
+                    menunjukkan grid lines
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-3">
+              Properti Penting CSS Grid
+            </h3>
+
+            <div class="overflow-x-auto">
+              <table
+                class="min-w-full bg-white rounded-lg overflow-hidden border-collapse"
+              >
+                <thead class="bg-pbk-blue text-white">
+                  <tr>
+                    <th class="py-2 px-4 text-left">Properti</th>
+                    <th class="py-2 px-4 text-left">Deskripsi</th>
+                    <th class="py-2 px-4 text-left">Contoh</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                  <tr>
+                    <td class="py-2 px-4 font-medium">display: grid</td>
+                    <td class="py-2 px-4">
+                      Mendefinisikan elemen sebagai grid container
+                    </td>
+                    <td class="py-2 px-4">
+                      <code class="bg-gray-100 px-1 py-0.5 rounded"
+                        >display: grid;</code
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-4 font-medium">grid-template-columns</td>
+                    <td class="py-2 px-4">
+                      Menentukan jumlah dan ukuran kolom dalam grid
+                    </td>
+                    <td class="py-2 px-4">
+                      <code class="bg-gray-100 px-1 py-0.5 rounded"
+                        >grid-template-columns: 1fr 2fr 1fr;</code
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-4 font-medium">grid-template-rows</td>
+                    <td class="py-2 px-4">
+                      Menentukan jumlah dan ukuran baris dalam grid
+                    </td>
+                    <td class="py-2 px-4">
+                      <code class="bg-gray-100 px-1 py-0.5 rounded"
+                        >grid-template-rows: 100px auto;</code
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-4 font-medium">gap</td>
+                    <td class="py-2 px-4">
+                      Menentukan jarak antara baris dan kolom
+                    </td>
+                    <td class="py-2 px-4">
+                      <code class="bg-gray-100 px-1 py-0.5 rounded"
+                        >gap: 10px;</code
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-4 font-medium">grid-column</td>
+                    <td class="py-2 px-4">
+                      Menentukan posisi item dalam kolom
+                    </td>
+                    <td class="py-2 px-4">
+                      <code class="bg-gray-100 px-1 py-0.5 rounded"
+                        >grid-column: 1 / 3;</code
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-4 font-medium">grid-row</td>
+                    <td class="py-2 px-4">
+                      Menentukan posisi item dalam baris
+                    </td>
+                    <td class="py-2 px-4">
+                      <code class="bg-gray-100 px-1 py-0.5 rounded"
+                        >grid-row: 2 / span 2;</code
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-4 font-medium">grid-area</td>
+                    <td class="py-2 px-4">
+                      Shorthand untuk grid-row dan grid-column
+                    </td>
+                    <td class="py-2 px-4">
+                      <code class="bg-gray-100 px-1 py-0.5 rounded"
+                        >grid-area: 1 / 1 / 3 / 3;</code
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-4 font-medium">justify-items</td>
+                    <td class="py-2 px-4">
+                      Menyelaraskan item secara horizontal dalam cell
+                    </td>
+                    <td class="py-2 px-4">
+                      <code class="bg-gray-100 px-1 py-0.5 rounded"
+                        >justify-items: center;</code
+                      >
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 px-4 font-medium">align-items</td>
+                    <td class="py-2 px-4">
+                      Menyelaraskan item secara vertikal dalam cell
+                    </td>
+                    <td class="py-2 px-4">
+                      <code class="bg-gray-100 px-1 py-0.5 rounded"
+                        >align-items: center;</code
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-3">
+              Unit Pengukuran dalam Grid
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="bg-gray-50 p-4 rounded-md">
+                <h4 class="font-bold text-pbk-blue mb-2">Fraction Unit (fr)</h4>
+                <p class="mb-2">
+                  Unit <code>fr</code> membagi ruang yang tersedia secara
+                  proporsional.
+                </p>
+                <div class="bg-gray-100 p-3 rounded-md">
+                  <pre
+                    class="text-sm"
+                  ><code class="language-css">grid-template-columns: 1fr 2fr 1fr;
+/* Kolom kedua akan 2x lebih lebar dari kolom pertama dan ketiga */</code></pre>
+                </div>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-md">
+                <h4 class="font-bold text-pbk-blue mb-2">Fungsi repeat()</h4>
+                <p class="mb-2">Membuat pola berulang dengan lebih mudah.</p>
+                <div class="bg-gray-100 p-3 rounded-md">
+                  <pre
+                    class="text-sm"
+                  ><code class="language-css">grid-template-columns: repeat(3, 1fr);
+/* Sama dengan: 1fr 1fr 1fr */</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-3">Contoh Kode Lengkap</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-bold text-pbk-blue mb-2">HTML</h4>
+                <div class="bg-gray-100 p-3 rounded-md">
+                  <pre
+                    class="text-sm"
+                  ><code class="language-html">&lt;div class="grid-container"&gt;
+  &lt;div class="grid-item"&gt;1&lt;/div&gt;
+  &lt;div class="grid-item"&gt;2&lt;/div&gt;
+  &lt;div class="grid-item"&gt;3&lt;/div&gt;
+  &lt;div class="grid-item"&gt;4&lt;/div&gt;
+  &lt;div class="grid-item"&gt;5&lt;/div&gt;
+  &lt;div class="grid-item"&gt;6&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+              </div>
+              <div>
+                <h4 class="font-bold text-pbk-blue mb-2">CSS</h4>
+                <div class="bg-gray-100 p-3 rounded-md">
+                  <pre
+                    class="text-sm"
+                  ><code class="language-css">.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 10px;
+  padding: 10px;
+}
+
+.grid-item {
+  background-color: #5DBCD2;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Item khusus */
+.grid-item:nth-child(1) {
+  grid-column: 1 / 3; /* Span dari kolom 1 sampai 3 */
+}</code></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-4">
+              <h4 class="font-bold text-pbk-blue mb-2">Hasil:</h4>
+              <div class="grid-box p-4 bg-gray-50 rounded-md">
+                <div class="grid grid-cols-3 gap-4">
+                  <div class="grid-item col-span-2">1</div>
+                  <div class="grid-item">2</div>
+                  <div class="grid-item">3</div>
+                  <div class="grid-item">4</div>
+                  <div class="grid-item">5</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interaktif Builder Section -->
+      <section id="interaktif" class="mb-12 hidden">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-bold mb-4 text-pbk-blue">
+            Interaktif Grid Builder
+          </h2>
+
+          <div class="control-panel mb-6">
+            <h3 class="font-semibold text-lg mb-3">Kontrol Grid</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1"
+                  >Jumlah Kolom</label
+                >
+                <div class="flex items-center">
+                  <button id="colDecrease" class="btn-pbk rounded-l-md">
+                    -
+                  </button>
+                  <span
+                    id="colCount"
+                    class="px-4 py-2 bg-gray-100 text-center font-medium"
+                    >3</span
+                  >
+                  <button id="colIncrease" class="btn-pbk rounded-r-md">
+                    +
+                  </button>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1"
+                  >Jumlah Baris</label
+                >
+                <div class="flex items-center">
+                  <button id="rowDecrease" class="btn-pbk rounded-l-md">
+                    -
+                  </button>
+                  <span
+                    id="rowCount"
+                    class="px-4 py-2 bg-gray-100 text-center font-medium"
+                    >2</span
+                  >
+                  <button id="rowIncrease" class="btn-pbk rounded-r-md">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1"
+                  >Gap (px)</label
+                >
+                <input
+                  type="range"
+                  id="gapSize"
+                  min="0"
+                  max="40"
+                  value="10"
+                  class="w-full"
+                />
+                <div class="flex justify-between text-xs text-gray-500">
+                  <span>0</span>
+                  <span>20</span>
+                  <span>40</span>
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1"
+                  >Column Layout</label
+                >
+                <select id="columnLayout" class="w-full p-2 border rounded-md">
+                  <option value="equal">Equal Columns (1fr each)</option>
+                  <option value="leftWide">Wide Left (2fr 1fr 1fr)</option>
+                  <option value="rightWide">Wide Right (1fr 1fr 2fr)</option>
+                  <option value="centerWide">Wide Center (1fr 2fr 1fr)</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </div>
+            </div>
+
+            <div id="customColumnsContainer" class="mb-4 hidden">
+              <label class="block text-sm font-medium text-gray-700 mb-1"
+                >Custom Column Values (e.g. "1fr 2fr 1fr")</label
+              >
+              <input
+                type="text"
+                id="customColumns"
+                class="w-full p-2 border rounded-md"
+                placeholder="1fr 2fr 1fr"
+              />
+            </div>
+          </div>
+
+          <div class="grid-preview mb-6">
+            <h3 class="font-semibold text-lg mb-3">Preview Grid</h3>
+            <div id="gridPreview" class="grid-container">
+              <!-- Grid items will be dynamically generated -->
+            </div>
+
+            <div class="mt-4">
+              <p class="font-medium mb-2">
+                Klik pada item untuk memilih dan menyesuaikan span-nya:
+              </p>
+              <div id="itemControls" class="p-4 bg-gray-50 rounded-md hidden">
+                <h4 class="font-medium mb-2">
+                  Item #<span id="selectedItemId">1</span>
+                </h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1"
+                      >Column Span</label
+                    >
+                    <div class="flex items-center">
+                      <button id="colSpanDecrease" class="btn-pbk rounded-l-md">
+                        -
+                      </button>
+                      <span
+                        id="colSpanCount"
+                        class="px-4 py-2 bg-gray-100 text-center font-medium"
+                        >1</span
+                      >
+                      <button id="colSpanIncrease" class="btn-pbk rounded-r-md">
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1"
+                      >Row Span</label
+                    >
+                    <div class="flex items-center">
+                      <button id="rowSpanDecrease" class="btn-pbk rounded-l-md">
+                        -
+                      </button>
+                      <span
+                        id="rowSpanCount"
+                        class="px-4 py-2 bg-gray-100 text-center font-medium"
+                        >1</span
+                      >
+                      <button id="rowSpanIncrease" class="btn-pbk rounded-r-md">
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-preview">
+            <h3 class="font-semibold text-lg mb-3">Generated CSS Code</h3>
+            <div class="bg-gray-100 p-4 rounded-md">
+              <pre id="cssOutput" class="text-sm overflow-x-auto"></pre>
+            </div>
+            <button id="copyCSS" class="btn-pbk mt-3">Copy to Clipboard</button>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="font-semibold text-lg mb-3">Mini Challenge</h3>
+            <p class="mb-2">Coba buat layout grid berikut:</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-medium text-pbk-blue mb-2">
+                  Challenge 1: Holy Grail Layout
+                </h4>
+                <div class="bg-gray-50 p-3 rounded-md">
+                  <div class="grid grid-cols-3 gap-2">
+                    <div
+                      class="bg-pbk-blue col-span-3 p-2 text-white text-center"
+                    >
+                      Header
+                    </div>
+                    <div class="bg-pbk-blue-dark p-2 text-white text-center">
+                      Sidebar
+                    </div>
+                    <div class="bg-pbk-blue-light p-2 text-center">
+                      Main Content
+                    </div>
+                    <div class="bg-pbk-blue-dark p-2 text-white text-center">
+                      Sidebar
+                    </div>
+                    <div
+                      class="bg-pbk-blue col-span-3 p-2 text-white text-center"
+                    >
+                      Footer
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="btn-pbk mt-2 see-solution"
+                  data-solution="holy-grail"
+                >
+                  Lihat Solusi
+                </button>
+              </div>
+              <div>
+                <h4 class="font-medium text-pbk-blue mb-2">
+                  Challenge 2: Magazine Layout
+                </h4>
+                <div class="bg-gray-50 p-3 rounded-md">
+                  <div class="grid grid-cols-4 gap-2">
+                    <div
+                      class="bg-pbk-blue col-span-4 p-2 text-white text-center"
+                    >
+                      Header
+                    </div>
+                    <div
+                      class="bg-pbk-blue-dark col-span-2 row-span-2 p-2 text-white text-center"
+                    >
+                      Featured
+                    </div>
+                    <div class="bg-pbk-blue-light p-2 text-center">
+                      Article 1
+                    </div>
+                    <div class="bg-pbk-blue-light p-2 text-center">
+                      Article 2
+                    </div>
+                    <div class="bg-pbk-blue-light p-2 text-center">
+                      Article 3
+                    </div>
+                    <div class="bg-pbk-blue-light p-2 text-center">
+                      Article 4
+                    </div>
+                    <div
+                      class="bg-pbk-blue col-span-4 p-2 text-white text-center"
+                    >
+                      Footer
+                    </div>
+                  </div>
+                </div>
+                <button
+                  class="btn-pbk mt-2 see-solution"
+                  data-solution="magazine"
+                >
+                  Lihat Solusi
+                </button>
+              </div>
+            </div>
+
+            <div class="solution-box mt-4 hidden" id="holy-grail-solution">
+              <h4 class="font-medium text-pbk-blue mb-1">
+                Solusi Holy Grail Layout:
+              </h4>
+              <div class="bg-gray-100 p-3 rounded-md">
+                <pre class="text-sm"><code class="language-css">.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  gap: 10px;
+  height: 100vh;
+}
+
+header {
+  grid-column: 1 / 4; /* Span seluruh kolom */
+}
+
+footer {
+  grid-column: 1 / 4; /* Span seluruh kolom */
+}</code></pre>
+              </div>
+            </div>
+
+            <div class="solution-box mt-4 hidden" id="magazine-solution">
+              <h4 class="font-medium text-pbk-blue mb-1">
+                Solusi Magazine Layout:
+              </h4>
+              <div class="bg-gray-100 p-3 rounded-md">
+                <pre class="text-sm"><code class="language-css">.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto auto auto;
+  gap: 10px;
+}
+
+header {
+  grid-column: 1 / 5; /* Span seluruh 4 kolom */
+}
+
+.featured {
+  grid-column: 1 / 3; /* Span 2 kolom */
+  grid-row: 2 / 4;    /* Span 2 baris */
+}
+
+footer {
+  grid-column: 1 / 5; /* Span seluruh 4 kolom */
+}</code></pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sandbox/Playground Section -->
+      <section id="playground" class="mb-12 hidden">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-bold mb-4 text-pbk-blue">
+            CSS Grid Playground
+          </h2>
+
+          <div class="mb-6">
+            <p class="mb-4">
+              Eksperimen dengan kode CSS Grid di area kode di bawah dan lihat
+              hasilnya langsung!
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div>
+                <h3 class="font-semibold text-lg mb-2">HTML</h3>
+                <div id="htmlEditor" class="editor"></div>
+              </div>
+              <div>
+                <h3 class="font-semibold text-lg mb-2">CSS</h3>
+                <div id="cssEditor" class="editor"></div>
+              </div>
+            </div>
+
+            <button id="runCode" class="btn-pbk mt-4">Jalankan Kode</button>
+
+            <div class="mt-6">
+              <h3 class="font-semibold text-lg mb-2">Hasil</h3>
+              <div
+                id="codeResult"
+                class="border border-gray-300 rounded-md p-4 min-h-64 bg-white"
+              >
+                <!-- Hasil kode akan ditampilkan di sini -->
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8">
+            <h3 class="font-semibold text-lg mb-3">Template Kode</h3>
+            <p class="mb-2">
+              Gunakan template berikut sebagai awal untuk eksperimen Anda:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div class="border border-gray-200 rounded-md overflow-hidden">
+                <div class="bg-pbk-blue text-white font-medium p-2">
+                  Basic Grid
+                </div>
+                <div class="p-3">
+                  <p class="text-sm mb-2">
+                    Grid sederhana dengan 3 kolom dan 2 baris
+                  </p>
+                  <button
+                    class="btn-pbk text-sm load-template"
+                    data-template="basic"
+                  >
+                    Gunakan Template
+                  </button>
+                </div>
+              </div>
+              <div class="border border-gray-200 rounded-md overflow-hidden">
+                <div class="bg-pbk-blue text-white font-medium p-2">
+                  Responsive Grid
+                </div>
+                <div class="p-3">
+                  <p class="text-sm mb-2">
+                    Grid yang responsif dengan Media Queries
+                  </p>
+                  <button
+                    class="btn-pbk text-sm load-template"
+                    data-template="responsive"
+                  >
+                    Gunakan Template
+                  </button>
+                </div>
+              </div>
+              <div class="border border-gray-200 rounded-md overflow-hidden">
+                <div class="bg-pbk-blue text-white font-medium p-2">
+                  Grid Areas
+                </div>
+                <div class="p-3">
+                  <p class="text-sm mb-2">Layout dengan grid-template-areas</p>
+                  <button
+                    class="btn-pbk text-sm load-template"
+                    data-template="areas"
+                  >
+                    Gunakan Template
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quiz Section -->
+      <section id="quiz" class="mb-12 hidden">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <h2 class="text-2xl font-bold mb-4 text-pbk-blue">Quiz CSS Grid</h2>
+
+          <div class="mb-4">
+            <p>
+              Uji pemahaman Anda tentang CSS Grid dengan menjawab
+              pertanyaan-pertanyaan berikut:
+            </p>
+            <div class="mt-2 mb-6">
+              <span id="quizProgress" class="text-sm font-medium"
+                >0/5 Soal Terjawab</span
+              >
+              <div class="w-full bg-gray-200 rounded-full h-2.5 mt-1">
+                <div
+                  id="quizProgressBar"
+                  class="bg-pbk-blue h-2.5 rounded-full"
+                  style="width: 0%"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="quizContainer" class="quiz-container">
+            <!-- Quiz questions will be dynamically generated -->
+          </div>
+
+          <div class="mt-4 flex justify-between">
+            <button
+              id="prevQuestion"
+              class="btn-pbk opacity-50 cursor-not-allowed"
+              disabled
+            >
+              Sebelumnya
+            </button>
+            <button id="nextQuestion" class="btn-pbk">Selanjutnya</button>
+          </div>
+
+          <div id="quizResults" class="mt-8 hidden">
+            <h3 class="text-xl font-bold mb-3 text-pbk-blue">Hasil Quiz</h3>
+            <div
+              class="bg-white border border-gray-200 rounded-lg p-6 text-center"
+            >
+              <div class="text-5xl font-bold mb-2">
+                <span id="scoreValue">0</span>/5
+              </div>
+              <p class="text-lg mb-4">Jawaban benar</p>
+              <div id="scoreMessage" class="mb-4"></div>
+              <button id="retakeQuiz" class="btn-pbk">Ulangi Quiz</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-pbk-blue text-white py-6">
+      <div class="container mx-auto px-4 text-center">
+        <p>© Paguyuban Barudak Komputer - Learning With Doing (LWD)</p>
+        <p class="text-sm mt-2">Dibuat untuk pembelajaran CSS Grid System</p>
+      </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

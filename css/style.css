@@ -1,0 +1,143 @@
+:root {
+  --primary-color: #5dbcd2;
+  --primary-dark: #4a9baf;
+  --primary-light: #8ad1e2;
+  --text-dark: #2c3e50;
+  --text-light: #f8f9fa;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
+}
+
+.bg-pbk-blue {
+  background-color: var(--primary-color);
+}
+
+.bg-pbk-blue-dark {
+  background-color: var(--primary-dark);
+}
+
+.bg-pbk-blue-light {
+  background-color: var(--primary-light);
+}
+
+.text-pbk-blue {
+  color: var(--primary-color);
+}
+
+.border-pbk-blue {
+  border-color: var(--primary-color);
+}
+
+.btn-pbk {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.3s;
+}
+
+.btn-pbk:hover {
+  background-color: var(--primary-dark);
+}
+
+.tab-active {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.editor {
+  height: 300px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.375rem;
+}
+
+.grid-box {
+  border: 1px dashed #ccc;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
+}
+
+.grid-item {
+  background-color: var(--primary-light);
+  color: var(--text-dark);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+/* Interaktif Grid Builder */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 20px;
+  background-color: #f1f5f9;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.control-panel {
+  background-color: #f8fafc;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e2e8f0;
+}
+
+.result-preview {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  margin-top: 20px;
+}
+
+/* Quiz Styles */
+.quiz-container {
+  background-color: #f8fafc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.quiz-question {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.option {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #f1f5f9;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.option:hover {
+  background-color: #e2e8f0;
+}
+
+.option.selected {
+  background-color: var(--primary-light);
+  font-weight: bold;
+}
+
+.correct {
+  background-color: #86efac;
+}
+
+.incorrect {
+  background-color: #fca5a5;
+}
